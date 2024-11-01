@@ -1,8 +1,8 @@
 import requests, sys
 
 def fetch_report(month, department):
-    
-    response = requests.get('http://127.0.0.1:5000/birthdays?month={month}&department={department}')
+
+    response = requests.get(f'http://127.0.0.1:5000/birthdays?month={month}&department={department}')
 
     if response.status_code == 200:
         report = response.json()
@@ -19,6 +19,7 @@ def fetch_report(month, department):
         print("Failed to fetch report:", response.status_code)
 
 if __name__ == "__main__":
+   
     if len(sys.argv) != 3:
         print("Usage: python fetch_report.py <month> <department>")
         sys.exit(1)

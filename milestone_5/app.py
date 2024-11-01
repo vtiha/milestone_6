@@ -32,15 +32,20 @@ def get_birthdays():
     }
 
     for emp in employees:
-        if emp['department'].lower() == department and datetime.strptime(emp['birthday'], '%Y-%m-%d').strftime('%B').lower() == month:
+        emp_department = emp['department'].lower()
+        request_department = department.lower()
+        
+
+        emp_birthday_month = datetime.strptime(emp['birthday'], '%Y-%m-%d').strftime('%B').lower()
+
+        if emp_department == request_department and emp_birthday_month == month:
             report['employees'].append({
                 "id": emp['id'],
                 "name": emp['full_name'],
-                "birthday": datetime.strptime(emp['birthday'], '%Y-%m-%d').strftime('%b %d')  # Форматування дати
+                "birthday": datetime.strptime(emp['birthday'], '%Y-%m-%d').strftime('%b %d')
             })
     
     report['total'] = len(report['employees'])
-
     response = json.dumps(report, indent=4)
     return response, 200
 
