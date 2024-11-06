@@ -6,7 +6,7 @@ fake = Faker()
 num_books = 100
 categories = ["Thriller", "Fantasy", "Mystery", "Adventure", "Nonfiction", "Comics", "Poetry", "History", "Art", "Science"]
 
-with open('milestone_9/books.csv', mode='w') as file:
+with open('milestone_8/books.csv', mode='w') as file:
 
     fieldnames = ['Title', 'Author', 'Category']
     writer = csv.DictWriter(file, fieldnames=fieldnames)
@@ -20,5 +20,5 @@ with open('milestone_9/books.csv', mode='w') as file:
             'Category': random.choice(categories) 
         })
 
-with open('milestone_9/books.csv', mode='r') as file:
+with open('milestone_8/books.csv', mode='r') as file:
     print(file.read())
